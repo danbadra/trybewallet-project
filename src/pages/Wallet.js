@@ -13,12 +13,20 @@ class Wallet extends React.Component {
   render() {
     // const { history, dispatch } = this.props;
     // const { currencies, expenses, editor, idToEdit } = this.state;
-    return <div>TrybeWallet</div>;
+    return (
+      <div>
+        <header>
+          <h2 data-testid="email-field">Teste</h2>
+          <h2 data-testid="total-field">Teste</h2>
+          <h2 data-testid="header-currency-field">Teste</h2>
+        </header>
+      </div>
+    );
   }
 }
 
 // Wallet.propTypes = {
-//   currencies: PropTypes.arrayOf(PropTypes.shape({ string })).isRequired,
+//   currencies: PropTypes.arrayOf(PropTypes.shape(PropTypes.string)).isRequired,
 //   expenses: PropTypes.arrayOf(PropTypes.shape({ Object })).isRequired,
 //   editor: PropTypes.bool.isRequired,
 //   idToEdit: PropTypes.string.isRequired,
