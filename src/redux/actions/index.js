@@ -1,6 +1,6 @@
 // ACTION TYPES
 export const ADD_USER = 'ADD_USER';
-// export const ADD_WALLET = 'ADD_WALLET';
+export const ADD_WALLET = 'ADD_WALLET';
 
 // ACTION CREATORS
 
@@ -9,7 +9,7 @@ export const addUser = (user) => ({
   payload: user,
 });
 
-// export const addWallet = (wallet) => ({
-//   type: ADD_WALLET,
-//   payload: wallet,
-// });
+export const addWallet = (wallet) => ({
+  type: ADD_WALLET,
+  payload: wallet,
+});
