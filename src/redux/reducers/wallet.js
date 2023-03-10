@@ -1,4 +1,4 @@
-import { ADD_WALLET } from '../actions';
+// import { ADD_WALLET } from '../actions';
 
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 export const INITIAL_STATE = {};
