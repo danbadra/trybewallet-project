@@ -26,7 +26,8 @@ class WalletForm extends Component {
     // 1. Previne o refresh da página;
     e.preventDefault();
 
-    //  ! 2. Altera o id antes de subir para o estado global - NÃO FUNCIONA
+    //  2. Altera o id antes de subir para o estado global
+    // obs.: expenses.length não funcionaria, pq depois poderia ocorrer ids duplicados em caso de exclusão de uma expense.
     const { dispatch } = this.props;
     this.setState(
       (previousState) => ({ id: previousState.id + 1 }),
@@ -132,7 +133,6 @@ class WalletForm extends Component {
 WalletForm.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
   dispatch: PropTypes.func.isRequired,
-  // expenses: PropTypes.arrayOf(PropTypes.shape(Object)).isRequired,
 };
 
 const mapStateToProps = (state) => ({

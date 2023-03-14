@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import store from '../redux/store';
 
 class Header extends Component {
-  // state = {
-  //   expenses: [], // array de objetos, com cada objeto tendo as chaves id, value, currency, method, tag, description e exchangeRates
-  // };
-
   verifyExpenses = () => {
     const state = store.getState();
     const { expenses } = state.wallet;
