@@ -1,18 +1,14 @@
 // ACTION TYPES
 export const ADD_USER = 'ADD_USER';
-export const ADD_WALLET = 'ADD_WALLET';
 export const ADD_CURRENCY = 'ADD_CURRENCY';
+export const ADD_QUOTATION = 'ADD_QUOTATION';
+export const ADD_EXPENSE = 'ADD_EXPENSE';
 
 // ACTION CREATORS
 
 export const addUser = (user) => ({
   type: ADD_USER,
   payload: user,
-});
-
-export const addWallet = (wallet) => ({
-  type: ADD_WALLET,
-  payload: wallet,
 });
 
 export const receiveCurrency = (currency) => ({
@@ -28,3 +24,29 @@ export function fetchCurrencies() {
         .filter((currency) => currency !== 'USDT'))));
   };
 }
+
+export const receiveAllCurrencies = (quotation) => ({
+  type: ADD_QUOTATION,
+  payload: quotation,
+});
+
+export function fetchQuotation(localState) {
+  return (dispatch) => {
+    fetch('https://economia.awesomeapi.com.br/json/all')
+      .then((response) => response.json())
+      .then((allCurrencies) => {
+        const newExpense = {
+          ...localState,
+          exchangeRates: allCurrencies,
+        };
+        dispatch(receiveAllCurrencies(newExpense));
+      });
+  };
+}
+
+// export const addToWallet = (expense) => ({
+//   type: ADD_EXPENSE,
+//   payload: expense,
+// });
+
+// thunk: action que dispara uma action. O fetch representa uma action disparando outra.
