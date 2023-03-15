@@ -125,7 +125,6 @@ class WalletForm extends Component {
               onClick={ this.addNewExpense }
             >
               Adicionar despesa
-
             </button>
           </div>
 

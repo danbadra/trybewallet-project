@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { removeExpense } from '../redux/actions';
 
 class Table extends Component {
+  handleDeleteButton = ({ target }) => {
+    const { expenses } = this.props;
+    // Encontra a expense que possui o mesmo id que o botão e a exclui.
+    for (let index = 0; index < expenses.length; index += 1) {
+      if (Number(expenses[index].id) === Number(target.id)) {
+        const { dispatch } = this.props;
+        dispatch(removeExpense(expenses[index]));
+      }
+    }
+  };
+
   render() {
     const { expenses } = this.props;
     return (
@@ -32,15 +44,24 @@ class Table extends Component {
                     <td>{Number(expense.value).toFixed(2)}</td>
                     <td>{expense.exchangeRates[expense.currency].name}</td>
                     <td>
-                      {(Number(expense.value)
-                      * Number(expense.exchangeRates[expense.currency].ask)).toFixed(2) }
-                    </td>
-                    <td>
                       {
                         (Number(expense.exchangeRates[expense.currency].ask)).toFixed(2)
                       }
                     </td>
+                    <td>
+                      {(Number(expense.value)
+                      * Number(expense.exchangeRates[expense.currency].ask)).toFixed(2) }
+                    </td>
                     <td>Real</td>
+                    <td>
+                      <button
+                        id={ expense.id }
+                        data-testid="delete-btn"
+                        onClick={ (event) => this.handleDeleteButton(event) }
+                      >
+                        Excluir
+                      </button>
+                    </td>
                   </tr>))
               )}
           </tbody>
@@ -51,6 +72,7 @@ class Table extends Component {
 }
 
 Table.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   expenses: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     value: PropTypes.string,

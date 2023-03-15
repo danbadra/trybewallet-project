@@ -3,10 +3,14 @@ import { connect } from 'react-redux';
 import store from '../redux/store';
 
 class Header extends Component {
+  componentDidUpdate() {
+    this.verifyExpenses();
+  }
+
   verifyExpenses = () => {
     const state = store.getState();
     const { expenses } = state.wallet;
-    console.log(expenses);
+    // console.log(expenses);
 
     if (expenses.length === 0) return 0;
 
@@ -27,12 +31,15 @@ class Header extends Component {
     return (
       <header>
         <div>
-          <h4 data-testid="email-field">{email}</h4>
-          <h4
-            data-testid="total-field"
-          >
-            {this.verifyExpenses().toFixed(2)}
-          </h4>
+          <p data-testid="email-field">{email}</p>
+          <div>
+            Total de gastos:
+            <p
+              data-testid="total-field"
+            >
+              {this.verifyExpenses().toFixed(2)}
+            </p>
+          </div>
           <h4
             data-testid="header-currency-field"
           >

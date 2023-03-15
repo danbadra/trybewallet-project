@@ -2,7 +2,7 @@
 export const ADD_USER = 'ADD_USER';
 export const ADD_CURRENCY = 'ADD_CURRENCY';
 export const ADD_QUOTATION = 'ADD_QUOTATION';
-export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
 // ACTION CREATORS
 
@@ -44,9 +44,9 @@ export function fetchQuotation(localState) {
   };
 }
 
-// export const addToWallet = (expense) => ({
-//   type: ADD_EXPENSE,
-//   payload: expense,
-// });
+export const removeExpense = (editedExpense) => ({
+  type: REMOVE_EXPENSE,
+  payload: editedExpense,
+});
 
 // thunk: action que dispara uma action. O fetch representa uma action disparando outra.
