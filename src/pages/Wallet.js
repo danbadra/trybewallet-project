@@ -15,7 +15,9 @@ class Wallet extends React.Component {
   render() {
     const { currencies } = this.props;
     return (
-      <div>
+      <div
+        className="bg-stone-200 min-h-screen"
+      >
         <Header />
         <WalletForm currencies={ currencies } />
         <Table />

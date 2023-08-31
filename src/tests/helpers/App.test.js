@@ -29,7 +29,7 @@ describe('Testes da aplicação Trybewallet', () => {
     });
   });
 
-  test('Teste da tela Wallet', async () => {
+  test('Testes da tela Wallet', async () => {
     const initialEntries = ['/'];
     const { history } = renderWithRouterAndRedux(<App />, { initialEntries });
     act(() => { history.push('/carteira'); });
@@ -67,8 +67,9 @@ describe('Testes da aplicação Trybewallet', () => {
 
     const expensesTable = screen.getByTestId('expenses-table');
     expect(expensesTable).toBeVisible();
-    await waitFor(() => {
-      expect(expensesTable).toContainElement('<td>Saúde</td>');
-    });
+
+    const tableValue = await screen.findByRole('cell', { name: /55\.00/i });
+
+    expect(tableValue).toBeInTheDocument();
   });
 });

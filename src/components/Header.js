@@ -29,22 +29,35 @@ class Header extends Component {
     const { email } = state.user;
 
     return (
-      <header>
+      <header
+        className="flex justify-around items-center bg-green-900 text-white h-20 w-screen"
+      >
+        <p
+          data-testid="email-field"
+        >
+          {email}
+        </p>
+
+        <p className="text-3xl">Trybewallet</p>
+
         <div>
-          <p data-testid="email-field">{email}</p>
-          <div>
+          <p className="inline">
             Total de gastos:
-            <p
-              data-testid="total-field"
-            >
-              {this.verifyExpenses().toFixed(2)}
-            </p>
-          </div>
-          <h4
-            data-testid="header-currency-field"
+            {' '}
+          </p>
+          <p
+            data-testid="total-field"
+            className="inline"
           >
+            {this.verifyExpenses().toFixed(2)}
+          </p>
+          <p
+            data-testid="header-currency-field"
+            className="inline"
+          >
+            {' '}
             BRL
-          </h4>
+          </p>
         </div>
       </header>
     );

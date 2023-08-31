@@ -48,8 +48,13 @@ class WalletForm extends Component {
     const { value, description } = this.state;
 
     return (
-      <div>
-        <form>
+      <div
+        className="flex justify-center"
+      >
+        <form
+          className="p-10 absolut grid place-content-center
+          mt-5 rounded-3xl bg-stone-400 shadow-black shadow-lg w-2/5"
+        >
 
           <label>
             Valor:
@@ -60,6 +65,7 @@ class WalletForm extends Component {
               name="value"
               value={ value }
               onChange={ this.handleChange }
+              className="bg-slate-200 block my-1 rounded-sm"
             />
           </label>
 
@@ -72,6 +78,7 @@ class WalletForm extends Component {
               name="description"
               value={ description }
               onChange={ this.handleChange }
+              className="bg-slate-200 block my-1 rounded-sm"
             />
           </label>
 
@@ -81,6 +88,7 @@ class WalletForm extends Component {
               data-testid="currency-input"
               name="currency"
               onChange={ this.handleChange }
+              className="bg-slate-200 block my-1 rounded-sm"
             >
               {currencies.map((currencyName, index) => (
                 <option key={ index } value={ currencyName }>
@@ -95,6 +103,7 @@ class WalletForm extends Component {
               data-testid="method-input"
               name="method"
               onChange={ this.handleChange }
+              className="bg-slate-200 block my-1 rounded-sm"
             >
               <option value="Dinheiro">Dinheiro</option>
               <option value="Cartão de crédito">Cartão de crédito</option>
@@ -108,6 +117,7 @@ class WalletForm extends Component {
               data-testid="tag-input"
               name="tag"
               onChange={ this.handleChange }
+              className="bg-slate-200 block my-1 rounded-sm"
             >
               <option value="Alimentação">Alimentação</option>
               <option value="Lazer">Lazer</option>
@@ -117,12 +127,18 @@ class WalletForm extends Component {
             </select>
           </label>
 
-          <br />
-          <br />
-
-          <div>
+          <div
+            className="block"
+          >
             <button
               onClick={ this.addNewExpense }
+              className="border-style: solid
+              bg-green-600
+              p-2
+              rounded-3xl
+              mt-5
+              disabled:bg-slate-300
+              text-white"
             >
               Adicionar despesa
             </button>
